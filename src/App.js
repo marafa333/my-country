@@ -18,7 +18,7 @@ function App() {
     "ישראל",
     "מדינת ישראל",
   ];
-
+// Palestine
     const fetchPalestine = async () => {
     setLoading(true);
     try {
