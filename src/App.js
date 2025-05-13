@@ -11,6 +11,7 @@ function App() {
     const BLACKLISTED_COUNTRIES = [
     "israel",
     "il",
+      "Isra",
     "state of israel",
     "isrā'īl",
     "إسرائيل",
