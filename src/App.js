@@ -24,6 +24,7 @@ function App() {
       setError("Country not found. Please try again.")
     } finally {
       setLoading(false);
+      setCountry("");
     }
   }
 
