@@ -7,18 +7,37 @@ function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+// Block List
+    const BLACKLISTED_COUNTRIES = [
+    "israel",
+    "il",
+    "state of israel",
+    "isrā'īl",
+    "إسرائيل",
+    "دولة إسرائيل",
+    "ישראל",
+    "מדינת ישראל",
+  ];
 
   const fetchCountry = async (e) => {
     e.preventDefault();
-    const trimCountry = country.trim();
+    const trimCountry = country.trim().toLowerCase();
     if (!trimCountry) return;
+    
+const isBlocked = BLACKLISTED_COUNTRIES.includes(trimCountry);
+    
+      if (isBlocked) {
+    setError("Country not found.");
+    setCountry("");
+    return;
+  }
 
     setLoading(true);
     setData(null);
     setError(null);
 
     try {
-      const resp = await axios.get(`https://restcountries.com/v3.1/name/${country}`)
+      const resp = await axios.get(`https://restcountries.com/v3.1/name/${trimCountry}`)
       setData(resp.data[0]);
     } catch (error) {
       setError("Country not found. Please try again.")
