@@ -19,6 +19,20 @@ function App() {
     "מדינת ישראל",
   ];
 
+    const fetchPalestine = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        "https://restcountries.com/v3.1/name/palestine"
+      );
+      setData(response.data[0]);
+    } catch (error) {
+      setError("Country not found. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const fetchCountry = async (e) => {
     e.preventDefault();
     const trimCountry = country.trim().toLowerCase();
@@ -27,9 +41,9 @@ function App() {
 const isBlocked = BLACKLISTED_COUNTRIES.includes(trimCountry);
     
       if (isBlocked) {
-    setError("Country not found.");
-    setCountry("");
-    return;
+     await fetchPalestine();
+      setCountry("");
+      return;
   }
 
     setLoading(true);
