@@ -10,8 +10,10 @@ function App() {
 // Block List
     const BLACKLISTED_COUNTRIES = [
     "israel",
+      "israe",
+      "isr",
     "il",
-      "Isra",
+      "isra",
     "state of israel",
       "state of is",
       "state of isr",
