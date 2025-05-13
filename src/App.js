@@ -39,7 +39,7 @@ function App() {
 
   const fetchCountry = async (e) => {
     e.preventDefault();
-    const trimCountry = country.trim().toLowerCase().length<=2;
+    const trimCountry = country.trim().toLowerCase();
     if (!trimCountry) return;
     
 const isBlocked = BLACKLISTED_COUNTRIES.includes(trimCountry);
